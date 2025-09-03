@@ -1,0 +1,38 @@
+---
+// Thanks to astro, very kind
+// import Welcome from '../components/Welcome.astro';
+// import Layout from '../layouts/Layout.astro';
+
+// Check https://docs.astro.build if stuck
+// Frontmatter script block JS / TS //
+
+const title = "sh3llfish"
+const items = ["Lobster", "Crap","Wasabi", "Arsenic"]
+
+
+// Syntax Essentials
+// import Header from "../components/Header.astro"
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>{title}</title>
+
+		<!-- link favicon svg -->
+		<link rel="icon" href="/favicon_512.svg" type="image/svg+xml" />
+	</head>
+	<body>
+		<header style="padding:1rem border-bottom:1px solid #ddd;">
+			Not yet
+		</header>
+
+		<main style="padding: 2rem;">
+			<h1>{title}</h1>
+			<ul>
+				{items.map((x) => <li>{x}</li>)}
+			</ul>
+		</main>
+	</body>
+</html>
