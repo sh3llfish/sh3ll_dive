@@ -1,1 +1,45 @@
 @import "tailwindcss";
+
+/* page wrapper */
+.site-root {
+    position: relative;
+    z-index: 0;
+    overflow: hidden; /* hide rotated edges */
+    min-height: 100vh;
+}
+
+/* rotated background layer */
+.cards-layer{
+    position: absolute;
+    inset: -45vh -45vw;
+    z-index: -1;
+    transform: rotate(20deg);
+    transform-origin: center;
+    pointer-events: none;
+    opacity: 0.18;
+}
+
+/* column tiling of cards */
+.cards-grid {
+    column-width: 280px;
+    column-gap: 1px;
+    padding: 24px;
+}
+
+.cards-grid img {
+    display: block;
+    width: 100%;
+    margin: 0 0 7px;
+    border-radius: 6px;
+    break-inside: avoid;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .06);
+}
+
+.fool-anchor {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 280px;
+    opacity: 1;
+    pointer-events: none;
+}

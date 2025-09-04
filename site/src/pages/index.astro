@@ -6,13 +6,32 @@
 // Check https://docs.astro.build if stuck
 // Frontmatter script block JS / TS //
 
-const title = "sh3llfish"
-const items = ["Lobster", "Crap","Wasabi", "Arsenic"]
-
+/** Global CSS sheet **/
+import "../styles/global.css"
 
 // Syntax Essentials
 // import Header from "../components/Header.astro"
 
+const title = "sh3llfish"
+const items = ["Lobster", "Crap","Wasabi", "Arsenic"]
+
+const cards = [
+  "/tarot/01_fool.png", "/tarot/02_magician.png", "/tarot/03_priestess.png",
+  "/tarot/04_empress.png", "/tarot/05_emperor.png", "/tarot/06_hierophant.png",
+  "/tarot/07_lovers.png", "/tarot/08_chariot.png", "/tarot/09_strength.png",
+  "/tarot/10_hermit.png", "/tarot/11_wheelfortune.png", "/tarot/12_justice.png",
+  "/tarot/13_hangedman.png", "/tarot/14_death.png", "/tarot/15_temperance.png",
+  "/tarot/16_devil.png", "/tarot/17_tower.png", "/tarot/18_star.png",
+  "/tarot/19_moon.png", "/tarot/20_sun.png", "/tarot/21_judgement.png",
+  "/tarot/22_world.png",
+];
+
+/** Reaptance of background deck **/
+const repeats = 12;
+const pool = [
+	"/tarot/01_fool.ong",
+	...Array.from({ length: cards.length * repeats }, (_, i) => cards[i % cards.length])
+];
 ---
 
 <html lang="en">
@@ -24,15 +43,23 @@ const items = ["Lobster", "Crap","Wasabi", "Arsenic"]
 		<link rel="icon" href="/favicon_512.svg" type="image/svg+xml" />
 	</head>
 	<body>
-		<header style="padding:1rem border-bottom:1px solid #ddd;">
-			Not yet
-		</header>
+		<div class="site-root">
+			<!-- Rotated Scrolling tarot background -->
+			<div class="cards-layer" aria-hidden="true">
+				<div class="cards-grid">
+					{pool.map((src) => <img src={src} alt="" loading="lazy" />)}
+				</div>
+				<img src="/tarot/01_fool.png" alt="" class="fool-anchor" />
+			</div>
 
-		<main style="padding: 2rem;">
-			<h1>{title}</h1>
-			<ul>
-				{items.map((x) => <li>{x}</li>)}
-			</ul>
-		</main>
+
+			<!-- foreground contents -->
+			<main style="padding: 2rem;">
+				<h1>{title}</h1>
+				<ul>
+					{items.map((x) => <li>{x}</li>)}
+				</ul>
+			</main>
+		</div>
 	</body>
 </html>
